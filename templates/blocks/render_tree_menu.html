@@ -1,0 +1,8 @@
+{% for subcategory in category.category_set.all %}
+    <ul class="nested">
+        <li>
+            <span class="caret"><a href="{% url 'menu' subcategory.title %}">{{ subcategory.title }}</a></span>
+            {% include 'blocks/render_tree_menu.html' with category=subcategory %}
+        </li>
+    </ul>
+{% endfor %}

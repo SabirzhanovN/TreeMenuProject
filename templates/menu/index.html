@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block 'title' %} <title>Menu</title> {% endblock %}
+
+{% block 'content' %}
+
+    <ul id="myUL">
+        <li><span class="caret">Категории</span>
+            <ul class="nested">
+              {% for category in data %}
+                 <li>
+                    <span class="caret">
+                        <a href="{% url 'menu' category.title %}">{{ category.title }}</a>
+                    </span>
+
+                    {% include 'blocks/render_tree_menu.html' with category=category %}
+                 </li>
+              {% endfor %}
+            </ul>
+        </li>
+    </ul>
+
+{% endblock %}
